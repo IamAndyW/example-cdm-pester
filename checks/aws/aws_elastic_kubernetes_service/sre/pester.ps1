@@ -34,7 +34,7 @@ BeforeAll {
     Set-AWSCredential -AccessKey $parentConfiguration.awsAccessKeyId -SecretKey $parentConfiguration.awsSecretAccessKey 
 }
 
-Describe $parentConfiguration.checkDisplayName -ForEach $discovery {
+Describe $parentConfiguration.jobDisplayName -ForEach $discovery {
 
     BeforeAll {
         $versionThreshold = $_.versionThreshold

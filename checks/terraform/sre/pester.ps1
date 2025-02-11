@@ -21,7 +21,7 @@ BeforeDiscovery {
     $discovery = $checkConfiguration
 } 
 
-Describe $parentConfiguration.checkDisplayName -ForEach $discovery {
+Describe $parentConfiguration.jobDisplayName -ForEach $discovery {
 
     Context "Required Version: <_>" -ForEach $_.requiredVersionConstraints {
         BeforeAll {
