@@ -46,16 +46,15 @@ if (Test-Path -Path $configurationFilename) {
 $parentConfiguration = @{
     checkName = $env:CHECK_NAME
     configurationFilename = $configurationFilename
-    collectionUrl = ("{0}/{1}/" -f "https://dev.azure.com", $env:ADO_ORGANISATION_NAME)
     baseUrl = ("{0}/{1}/{2}" -f "https://dev.azure.com", $env:ADO_ORGANISATION_NAME, $env:ADO_PROJECT_NAME)
     clientName = $env:CLIENT_NAME
     accessToken = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$($env:ADO_ACCESS_TOKEN)"))
     action = $env:ADO_ACTION
     stageDisplayName = $env:STAGE_DISPLAY_NAME
-    stageId = $env:STAGE_ID
     jobDisplayName = $env:JOB_DISPLAY_NAME
     jobId = $env:JOB_ID
-    buildProjectName = $env:ADO_BUILD_PROJECT_NAME
+    systemCollectionUri = ("{0}/{1}/" -f "https://dev.azure.com", $env:ADO_SYSTEM_COLLECTIONURI)
+    systemProjectName = $env:ADO_SYSTEM_PROJECT_NAME
     buildId = $env:ADO_BUILD_ID
     buildNumber = $env:ADO_BUILD_NUMBER
 }

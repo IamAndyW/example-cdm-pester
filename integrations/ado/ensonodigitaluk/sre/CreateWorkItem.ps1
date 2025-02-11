@@ -69,7 +69,7 @@ if ($wiPBIs.workItems.Count -eq 0) {
 
     # // START creating new PBI //
     $script:wiDescription = (
-        "<a href='{0}{1}/_build/results?buildId={2}&view=logs&s={3}&j={4}'>Build: {5}</a>" -f $parentConfiguration.collectionUrl, $parentConfiguration.buildProjectName, $parentConfiguration.buildId, $parentConfiguration.stageId, $parentConfiguration.jobId, $parentConfiguration.buildNumber
+        "<a href='{0}{1}/_build/results?buildId={2}&view=logs&j={3}'>Build: {4}</a>" -f $parentConfiguration.systemCollectionUri, $parentConfiguration.systemProjectName, $parentConfiguration.buildId, $parentConfiguration.jobId, $parentConfiguration.buildNumber
     )
 
     $payload = @(
