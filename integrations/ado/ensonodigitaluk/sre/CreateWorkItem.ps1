@@ -128,7 +128,7 @@ if ($wiPBIs.workItems.Count -eq 0) {
     $script:newWI = New-ADOWorkItem -baseURL $parentConfiguration.baseUrl -accessToken $parentConfiguration.accessToken -wiType "Product Backlog Item" -payload $payload
 
     Write-Information -MessageData ("Work item id '{0}' linked to parent '{1}' with id '{2}'" -f $newWI.id, $parentConfiguration.clientName, $wiParent.id)
-    Write-Information -MessageData ("Work item link '{0}/{1}_workitems/edit/{2}'" -f $parentConfiguration.systemCollectionUri, $parentConfiguration.systemProjectName, $newWI.id)
+    Write-Information -MessageData ("Work item link '{0}/_workitems/edit/{1}'" -f $parentConfiguration.baseUrl, $newWI.id)
 
     # // STOP creating new PBI //
 } else {
@@ -136,4 +136,5 @@ if ($wiPBIs.workItems.Count -eq 0) {
     Write-Warning ("Please consider skipping this check by updating the pipeline environment variable '{0}' in the file: {1}/{2}/{3}" -f "skip_until", $env:CDM_CHECKS_DIRECTORY, $parentConfiguration.checkName , "pipeline-variables.yml")
 
     Write-Information -MessageData ("Work item Id: {0}" -f $wiPBIs.workItems.id)
+    Write-Information -MessageData ("Work item link '{0}/_workitems/edit/{1}'" -f $parentConfiguration.baseUrl, $wiPBIs.workItems.id)
 }
