@@ -8,7 +8,7 @@
 . ./powershell/functions/New-ADOWorkItem.ps1
 
 # // START check for existing Product Backlog Item //
-$script:wiTitle = ("{0}: {1} {2} FAILED" -f $(("{0} {1}" -f $parentConfiguration.clientName, "CDM Checksss")), $parentConfiguration.stageDisplayName, $parentConfiguration.jobDisplayName)
+$script:wiTitle = ("{0}: {1} {2} FAILED" -f $(("{0} {1}" -f $parentConfiguration.clientName, "CDM Check")), $parentConfiguration.stageDisplayName, $parentConfiguration.jobDisplayName)
 
 $script:wiPBIQuery = (
     "Select [System.Id],

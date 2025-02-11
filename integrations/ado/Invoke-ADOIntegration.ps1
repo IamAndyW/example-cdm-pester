@@ -9,8 +9,11 @@
 $InformationPreference = "Continue"
 $ErrorActionPreference = "Stop"
 
+# installing dependencies
+. ./powershell/functions/Install-PowerShellModules.ps1
 
-$script:adoDirectory = ("{0}/{1}/{2}/{3}" -f $env:CDM_INTEGRATION_DIRECTORY, "ado", $env:ADO_ORGANISATION_NAME, $env:ADO_PROJECT_NAME)
+
+$script:adoDirectory = ("{0}/{1}/{2}/{3}" -f $env:CDM_INTEGRATIONS_DIRECTORY, "ado", $env:ADO_ORGANISATION_NAME, $env:ADO_PROJECT_NAME)
 
 if (Test-Path -Path ("{0}/{1}.ps1" -f $adoDirectory, $env:ADO_ACTION)) {
     $script:adoActionFilename = ("{0}/{1}.ps1" -f $adoDirectory, $env:ADO_ACTION)
