@@ -14,15 +14,10 @@ BeforeDiscovery {
     # to avoid a potential clash with the YamlDotNet libary always load the module 'powershell-yaml' last
     Install-PowerShellModules -moduleNames ("powershell-yaml")
 
-    $configurationFilename = $parentConfiguration.configurationFilename
+    # configuration
+    $configurationFile = $parentConfiguration.configurationFile
     $stageName = $parentConfiguration.stageName
-
-    # loading check configuration
-    if (-not (Test-Path -Path $configurationFilename)) {
-        throw ("Missing configuration file: {0}" -f $configurationFilename)
-    }
-
-    $checkConfiguration = Get-Content -Path $configurationFilename | ConvertFrom-Yaml
+    $checkConfiguration = Get-Content -Path $configurationFile | ConvertFrom-Yaml
 
     # building the discovery objects
     $discovery = $checkConfiguration

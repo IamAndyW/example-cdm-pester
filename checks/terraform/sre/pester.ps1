@@ -10,12 +10,9 @@ BeforeDiscovery {
 
     $configurationFilename = $parentConfiguration.configurationFilename
 
-    # loading check configuration
-    if (-not (Test-Path -Path $configurationFilename)) {
-        throw ("Missing configuration file: {0}" -f $configurationFilename)
-    }
-
-    $checkConfiguration = Get-Content -Path $configurationFilename | ConvertFrom-Yaml
+    # configuration
+    $configurationFile = $parentConfiguration.configurationFile
+    $checkConfiguration = Get-Content -Path $configurationFile | ConvertFrom-Yaml
 
     # building the discovery objects
     $discovery = $checkConfiguration

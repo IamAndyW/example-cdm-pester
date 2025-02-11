@@ -8,14 +8,9 @@ BeforeDiscovery {
     # to avoid a potential clash with the YamlDotNet libary always load the module 'powershell-yaml' last
     Install-PowerShellModules -moduleNames ("PowerShellForGitHub", "powershell-yaml")
 
-    $configurationFilename = $parentConfiguration.configurationFilename
-
-    # loading check configuration
-    if (-not (Test-Path -Path $configurationFilename)) {
-        throw ("Missing configuration file: {0}" -f $configurationFilename)
-    }
-
-    $checkConfiguration = Get-Content -Path $configurationFilename | ConvertFrom-Yaml
+    # configuration
+    $configurationFile = $parentConfiguration.configurationFile
+    $checkConfiguration = Get-Content -Path $configurationFile | ConvertFrom-Yaml
     
     # GitHub authentication
     $secureString = ($parentConfiguration.githubToken | ConvertTo-SecureString -AsPlainText -Force)
