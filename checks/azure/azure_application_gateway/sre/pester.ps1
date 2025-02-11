@@ -26,8 +26,16 @@ BeforeDiscovery {
 }
 
 BeforeAll {
+    # dot-sourcing functions
+    $functions = (
+        "Connect-Azure.ps1"
+    )
+
+    foreach ($function in $functions) {
+        . ("{0}/powershell/functions/{1}" -f $env:CDM_LIBRARY_DIRECTORY, $function)
+    }
+    
     # Azure authentication
-    . ./powershell/functions/Connect-Azure.ps1
     Connect-Azure `
         -tenantId $parentConfiguration.armTenantId `
         -subscriptionId $parentConfiguration.armSubscriptionId `
@@ -63,7 +71,6 @@ Describe $parentConfiguration.jobDisplayName -ForEach $discovery {
     
             } else {
                 # installing dependencies
-                . ../../powershell/functions/Install-PowerShellModules.ps1
                 Install-PowerShellModules -moduleNames ("Az.KeyVault")
                 
                 $elements = $keyVaultSecretId.Split('/')

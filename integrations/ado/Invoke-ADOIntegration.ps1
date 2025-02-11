@@ -10,7 +10,14 @@ $InformationPreference = "Continue"
 $ErrorActionPreference = "Stop"
 
 # installing dependencies
-. ./powershell/functions/Install-PowerShellModules.ps1
+$functions = (
+   "Retry-Command.ps1",
+   "Install-PowerShellModules.ps1" 
+)
+
+foreach ($function in $functions) {
+    . ("{0}/powershell/functions/{1}" -f $env:CDM_LIBRARY_DIRECTORY, $function)
+}
 
 
 $script:adoDirectory = ("{0}/{1}/{2}/{3}" -f $env:CDM_INTEGRATIONS_DIRECTORY, "ado", $env:ADO_ORGANISATION_NAME, $env:ADO_PROJECT_NAME)

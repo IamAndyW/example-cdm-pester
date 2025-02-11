@@ -8,9 +8,15 @@
 $InformationPreference = "Continue"
 $ErrorActionPreference = "Stop"
 
-# installing dependencies
-. ./powershell/functions/Retry-Command.ps1
-. ./powershell/functions/Install-PowerShellModules.ps1
+# dot-sourcing functions
+$functions = (
+   "Retry-Command.ps1",
+   "Install-PowerShellModules.ps1" 
+)
+
+foreach ($function in $functions) {
+    . ("{0}/powershell/functions/{1}" -f $env:CDM_LIBRARY_DIRECTORY, $function)
+}
 
 # time format and zones
 $script:targetTimeZone = Get-TimeZone -ListAvailable | Where-Object {$_.id -eq $env:CDM_DATE_TIMEZONE}

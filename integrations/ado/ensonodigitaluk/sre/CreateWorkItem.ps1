@@ -4,8 +4,14 @@
 #>
 
 # # dot-sourcing functions
-. ./powershell/functions/Find-ADOWorkItemsByQuery.ps1
-. ./powershell/functions/New-ADOWorkItem.ps1
+$functions = (
+   "Find-ADOWorkItemsByQuery.ps1",
+   "New-ADOWorkItem.ps1" 
+)
+
+foreach ($function in $functions) {
+    . ("{0}/powershell/functions/{1}" -f $env:CDM_LIBRARY_DIRECTORY, $function)
+}
 
 # // START check for existing Product Backlog Item //
 $script:wiTitle = ("{0}: {1} {2} FAILED" -f $(("{0} {1}" -f $parentConfiguration.clientName, "CDM Check")), $parentConfiguration.stageDisplayName, $parentConfiguration.jobDisplayName)
@@ -37,8 +43,8 @@ if ($wiPBIs.workItems.Count -eq 0) {
         ConvertFrom-Yaml).($parentConfiguration.action).parentMappings |
             Where-Object {$_.clientName -eq $parentConfiguration.clientName}
 
-    if ($null -eq $parentMappings) {
-        throw ("Missing the '{0}' configuration for the action '{1}' and client '{2}'" -f "parentMappings", $parentConfiguration.action, $parentConfiguration.clientName)
+    if ($null -eq $parentMappings.($parentConfiguration.checkName)) {
+        throw ("Missing the '{0}' parentMappings configuration for the client '{1}' and check '{2}'" -f $parentConfiguration.action, $parentConfiguration.clientName, $parentConfiguration.checkName)
     }
 
     $script:wiParentQuery = (
