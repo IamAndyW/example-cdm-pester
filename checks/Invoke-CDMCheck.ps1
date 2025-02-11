@@ -57,7 +57,6 @@ if ($skipUntilDateTime -gt $dateTime) {
 } else {
     $parentConfiguration = @{ 
         configurationFile = $configurationFile
-        resultsFilename = ("{0}_{1}_results.xml" -f "cdm", "check")
         checkDisplayName = $env:CHECK_DISPLAY_NAME
         dateFormat = $env:CDM_DATE_FORMAT
         dateTime = $dateTime

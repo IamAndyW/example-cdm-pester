@@ -3,7 +3,7 @@
     This is the entrypoint into the CDM check ADO integration which performs validation and sets common configuration.
 
     This script will invoke a custom PowerShell script for the ADO organisation, project and action
-    Example: cdm_library/integrations/ado/ensonodigitaluk/sre/CreateWorkitem.ps1
+    Example: cdm_library/integrations/ado/[organisation name]/[project name]/CreateWorkitem.ps1
 #>
 
 $InformationPreference = "Continue"
