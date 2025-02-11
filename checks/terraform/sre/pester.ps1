@@ -8,7 +8,7 @@ BeforeDiscovery {
     # to avoid a potential clash with the YamlDotNet libary always load the module 'powershell-yaml' last
     Install-PowerShellModules -moduleNames ("powershell-yaml")
 
-    $configurationFilename = $parentConfiguration.configurationFilename
+    $configurationFile = $parentConfiguration.configurationFile
 
     # configuration
     $configurationFile = $parentConfiguration.configurationFile
@@ -18,7 +18,7 @@ BeforeDiscovery {
     $discovery = $checkConfiguration
 } 
 
-Describe $parentConfiguration.jobDisplayName -ForEach $discovery {
+Describe $parentConfiguration.checkDisplayName -ForEach $discovery {
 
     Context "Required Version: <_>" -ForEach $_.requiredVersionConstraints {
         BeforeAll {

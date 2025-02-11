@@ -16,7 +16,7 @@ BeforeDiscovery {
     $discovery = $checkConfiguration
 }
 
-Describe $parentConfiguration.jobDisplayName -ForEach $discovery {
+Describe $parentConfiguration.checkDisplayName -ForEach $discovery {
 
     BeforeAll {
         $parameters = @{

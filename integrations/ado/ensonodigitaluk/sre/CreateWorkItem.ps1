@@ -14,7 +14,7 @@ foreach ($function in $functions) {
 }
 
 # // START check for existing Product Backlog Item //
-$script:wiTitle = ("{0}: {1} {2} FAILED" -f $(("{0} {1}" -f $parentConfiguration.clientName, "CDM Check")), $parentConfiguration.stageDisplayName, $parentConfiguration.jobDisplayName)
+$script:wiTitle = ("{0}: {1} {2} FAILED" -f $(("{0} {1}" -f $parentConfiguration.clientName, "CDM Check")), $parentConfiguration.stageDisplayName, $parentConfiguration.checkDisplayName)
 
 $script:wiPBIQuery = (
     "Select [System.Id],
@@ -39,7 +39,7 @@ if ($wiPBIs.workItems.Count -eq 0) {
     # to avoid a potential clash with the YamlDotNet libary always load the module 'powershell-yaml' last
     Install-PowerShellModules -moduleNames ("powershell-yaml")
 
-    $script:parentMappings = (Get-Content -Path $parentConfiguration.configurationFilename |
+    $script:parentMappings = (Get-Content -Path $parentConfiguration.configurationFile |
         ConvertFrom-Yaml).($parentConfiguration.action).parentMappings |
             Where-Object {$_.clientName -eq $parentConfiguration.clientName}
 

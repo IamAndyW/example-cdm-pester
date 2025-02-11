@@ -58,7 +58,7 @@ if ($skipUntilDateTime -gt $dateTime) {
     $parentConfiguration = @{ 
         configurationFile = $configurationFile
         resultsFilename = ("{0}_{1}_results.xml" -f "cdm", "check")
-        jobDisplayName = $env:JOB_DISPLAY_NAME
+        checkDisplayName = $env:CHECK_DISPLAY_NAME
         dateFormat = $env:CDM_DATE_FORMAT
         dateTime = $dateTime
         stageName = $env:STAGE_NAME

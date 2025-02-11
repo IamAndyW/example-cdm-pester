@@ -45,7 +45,7 @@ BeforeDiscovery {
     $dateThreshold = $parentConfiguration.dateTime.AddDays(-$checkConfiguration.dependabotPRStaleInDays)
 }
 
-Describe "<_.owner> $($parentConfiguration.jobDisplayName)" -ForEach $discovery {
+Describe "<_.owner> $($parentConfiguration.checkDisplayName)" -ForEach $discovery {
 
     Context "Repository: '<_.repositoryName>'" -ForEach $_.repositories {
 

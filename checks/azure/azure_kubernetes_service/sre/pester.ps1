@@ -36,7 +36,7 @@ BeforeAll {
         -clientSecret $parentConfiguration.armClientSecret
 }
 
-Describe $parentConfiguration.jobDisplayName -ForEach $discovery {
+Describe $parentConfiguration.checkDisplayName -ForEach $discovery {
 
     BeforeAll {        
         $versionThreshold = $_.versionThreshold
