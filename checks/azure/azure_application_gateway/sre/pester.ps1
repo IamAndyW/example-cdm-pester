@@ -6,7 +6,6 @@ param (
 BeforeDiscovery {
     # installing dependencies
     # to avoid a potential clash with the YamlDotNet libary always load the module 'powershell-yaml' last
-    . ../../powershell/functions/Install-PowerShellModules.ps1
     Install-PowerShellModules -moduleNames ("Az.Network", "powershell-yaml")
 
     $configurationFilename = $parentConfiguration.configurationFilename
@@ -28,7 +27,7 @@ BeforeDiscovery {
 
 BeforeAll {
     # Azure authentication
-    . ../../powershell/functions/Connect-Azure.ps1
+    . ./powershell/functions/Connect-Azure.ps1
     Connect-Azure `
         -tenantId $parentConfiguration.armTenantId `
         -subscriptionId $parentConfiguration.armSubscriptionId `

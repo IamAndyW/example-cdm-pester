@@ -5,7 +5,6 @@ param (
 
 BeforeDiscovery {
     # installing dependencies
-    . ../../powershell/functions/Install-PowerShellModules.ps1
     Install-PowerShellModules -moduleNames ("AWS.Tools.Installer")
     
     Install-AWSToolsModule AWS.Tools.Common, AWS.Tools.EKS -Force

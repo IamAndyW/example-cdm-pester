@@ -6,7 +6,7 @@ param (
 BeforeDiscovery {
     # installing dependencies
     # to avoid a potential clash with the YamlDotNet libary always load the module 'powershell-yaml' last
-    . ../../powershell/functions/Install-PowerShellModules.ps1
+    #. ../../powershell/functions/Install-PowerShellModules.ps1
     Install-PowerShellModules -moduleNames ("PowerShellForGitHub", "powershell-yaml")
 
     $configurationFilename = $parentConfiguration.configurationFilename
