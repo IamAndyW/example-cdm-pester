@@ -35,7 +35,7 @@ BeforeAll {
         -clientSecret $parentConfiguration.armClientSecret
 }
 
-Describe $parentConfiguration.displayName -ForEach $discovery {
+Describe $parentConfiguration.checkDisplayName -ForEach $discovery {
 
     BeforeAll {
         $renewalStartDate = $parentConfiguration.dateTime.AddDays($_.certificateRenewalBeforeInDays)    

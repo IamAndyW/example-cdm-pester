@@ -21,7 +21,7 @@ BeforeDiscovery {
     $discovery = $checkConfiguration
 } 
 
-Describe "$($parentConfiguration.displayName) / <_.organisation>" -ForEach $discovery {
+Describe "$($parentConfiguration.checkDisplayName) / <_.organisation>" -ForEach $discovery {
 
     BeforeAll {
         $accessToken = [System.Convert]::ToBase64String([System.Text.Encoding]::ASCII.GetBytes(":$($parentConfiguration.adoAccessToken)"))
