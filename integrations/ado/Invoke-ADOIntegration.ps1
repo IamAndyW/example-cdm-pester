@@ -10,7 +10,7 @@ $InformationPreference = "Continue"
 $ErrorActionPreference = "Stop"
 
 
-$script:adoDirectory = ("{0}/{1}/{2}" -f $env:ADO_INTEGRATION_DIRECTORY, $env:ADO_ORGANISATION_NAME, $env:ADO_PROJECT_NAME)
+$script:adoDirectory = ("{0}/{1}/{2}/{3}" -f $env:CDM_INTEGRATION_DIRECTORY, "ado", $env:ADO_ORGANISATION_NAME, $env:ADO_PROJECT_NAME)
 
 if (Test-Path -Path ("{0}/{1}.ps1" -f $adoDirectory, $env:ADO_ACTION)) {
     $script:adoActionFilename = ("{0}/{1}.ps1" -f $adoDirectory, $env:ADO_ACTION)
