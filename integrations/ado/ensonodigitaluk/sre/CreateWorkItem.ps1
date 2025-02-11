@@ -128,6 +128,8 @@ if ($wiPBIs.workItems.Count -eq 0) {
     $script:newWI = New-ADOWorkItem -baseURL $parentConfiguration.baseUrl -accessToken $parentConfiguration.accessToken -wiType "Product Backlog Item" -payload $payload
 
     Write-Information -MessageData ("Work item id '{0}' linked to parent '{1}' with id '{2}'" -f $newWI.id, $parentConfiguration.clientName, $wiParent.id)
+    Write-Information -MessageData ("Work item link '{0}/{1}_workitems/edit/{2}'" -f $parentConfiguration.systemCollectionUri, $parentConfiguration.systemProjectName, $newWI.id)
+
     # // STOP creating new PBI //
 } else {
     Write-Warning ("Work item with title '{0}' already exists and is not closed or removed" -f $wiTitle)
